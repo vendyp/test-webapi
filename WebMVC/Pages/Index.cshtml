@@ -20,6 +20,11 @@
 function myFunction(selectObject)
 {
     var value = selectObject.value;
-    document.getElementById("text").textContent=value;
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        document.getElementById("text").textContent=value;
+    };
+    xhr.open('post', '/Index?handler=GetWeather&city=London');
+    xhr.send();
 }
 </script>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using WebMVC.Abstractions;
 
@@ -22,6 +23,9 @@ public class IndexModel : PageModel
     {
         Cities.AddRange(await _weatherService.GetAllCityAsync(CancellationToken.None));
     }
-    
-    
+
+    public IActionResult OnPostGetWeather(string city)
+    {
+        return new JsonResult("aa");
+    }
 }

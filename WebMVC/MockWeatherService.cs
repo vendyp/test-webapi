@@ -69,6 +69,16 @@ public class MockWeatherService : IWeatherService
         });
     }
 
+    public Task<List<string>> GetAllCountryAsync(CancellationToken cancellationToken)
+    {
+        return Task.FromResult(new List<string>
+        {
+            "England",
+            "Indonesia",
+            "Italia",
+        });
+    }
+
     public Task<List<string>> GetAllCityAsync(CancellationToken cancellationToken)
     {
         return Task.FromResult(new List<string>
@@ -77,6 +87,17 @@ public class MockWeatherService : IWeatherService
             "Zocca",
             "Jakarta"
         });
+    }
+
+    public Task<List<string>> GetAllCityAsync(string country, CancellationToken cancellationToken)
+    {
+        if (country == "Italia")
+            return Task.FromResult(new List<string>
+            {
+                "Zocca"
+            });
+
+        return Task.FromResult(new List<string>());
     }
 
     public Task<WeatherDto?> GetWeatherAsync(string city, CancellationToken cancellationToken)
