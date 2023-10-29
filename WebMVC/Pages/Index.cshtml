@@ -5,6 +5,21 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <select class="form-select" name="city" onchange="myFunction(this)">
+        <option value="">-Select City-</option>
+        @foreach (var item in Model.Cities)
+        {
+            <option value="@item">@item</option>
+        }
+    </select>
+    
+    <h1 class="display-4" id="text">Welcome</h1>
 </div>
+
+<script type="text/javascript">
+function myFunction(selectObject)
+{
+    var value = selectObject.value;
+    document.getElementById("text").textContent=value;
+}
+</script>

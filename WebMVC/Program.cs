@@ -1,7 +1,16 @@
+using WebMVC;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages()
+    .AddRazorRuntimeCompilation();
+
+//here is the factory
+if (builder.Environment.IsDevelopment())
+    builder.Services.AddDevelopmentInfrastructure();
+else
+    builder.Services.AddInfrastructure();
 
 var app = builder.Build();
 
